@@ -35,7 +35,7 @@ public class MainPage extends PageObject {
     // Вводит в поле "Откуда?" стартовую точку
     public void enterInFromTextField (String startPoint) {
         fromTextField.clear();
-        //wait.until(ExpectedConditions.attributeToBe(fromTextField, "value", "")); // ждём пока поле не очистится
+        wait.until(ExpectedConditions.textToBePresentInElementValue(fromTextField, "")); // ждём пока поле не очистится
         fromTextField.sendKeys(startPoint);
         wait.until(ExpectedConditions.attributeToBe(fromTextField, "value", startPoint)); // ждём пока не закончится ввод
     }
@@ -43,17 +43,17 @@ public class MainPage extends PageObject {
     // Вводит в поле "Куда?" конечную точку
     public void enterInToTextField (String destinationPoint) {
         toTextField.clear();
-        wait.until(ExpectedConditions.attributeToBe(toTextField, "value", "")); // ждём пока поле не очистится
+        wait.until(ExpectedConditions.textToBePresentInElementValue(toTextField, "")); // ждём пока поле не очистится
         toTextField.sendKeys(destinationPoint);
-        wait.until(ExpectedConditions.attributeToBe(toTextField, "value", destinationPoint)); // ждём пока не закончится ввод
+        wait.until(ExpectedConditions.textToBePresentInElementValue(toTextField, destinationPoint)); // ждём пока не закончится ввод
     }
 
     // Вводит в поле "Когда?" дату прописью
     public void enterInWhenTextField (String date) {
         whenTextField.clear();
-        wait.until(ExpectedConditions.attributeToBe(whenTextField, "value", "")); // ждём пока поле не очистится
+        wait.until(ExpectedConditions.textToBePresentInElementValue(whenTextField, "")); // ждём пока поле не очистится
         whenTextField.sendKeys(date);
-        wait.until(ExpectedConditions.attributeToBe(whenTextField, "value", date)); // ждём пока не закончится ввод
+        wait.until(ExpectedConditions.textToBePresentInElementValue(whenTextField, date)); // ждём пока не закончится ввод
     }
 
     // Заполняет все поля
@@ -72,7 +72,7 @@ public class MainPage extends PageObject {
 
     // Кликает по кнопке "Найти"
     public SearchPage clickOnSearchButton () {
-        searchButton.click();
+        searchButton.submit();
         return new SearchPage(driver,wait);
     }
 
