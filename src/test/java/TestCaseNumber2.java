@@ -44,8 +44,7 @@ public class TestCaseNumber2 {
     public static void setUp() {
         /*System.setProperty("webdriver.gecko.driver", "C:/geckodriver.exe");
         driver = new FirefoxDriver();*/
-        System.setProperty("webdriver.chrome.driver", "C:/chromedriver.exe");
-        driver = new ChromeDriver();
+        driver = DriverFabric.getDriver("chrome");
         wait = new WebDriverWait(driver, 20);
 
         // 1. Пользователь открывает сайт https://rasp.yandex.ru

@@ -4,6 +4,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageobjects.MainPage;
 import pageobjects.SearchPage;
@@ -17,10 +18,8 @@ public class TestCaseNumber1 {
 
     @BeforeClass
     public static void setUp() {
-        /*System.setProperty("webdriver.gecko.driver", "C:/geckodriver.exe");
-        driver = new FirefoxDriver();*/
-        System.setProperty("webdriver.chrome.driver", "C:/chromedriver.exe");
-        driver = new ChromeDriver();
+        driver = DriverFabric.getDriver("chrome");
+        //driver = DriverFabric.getDriver("safari");
         wait = new WebDriverWait(driver, 20);
 
         // 1. Пользователь открывает сайт https://rasp.yandex.ru

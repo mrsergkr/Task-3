@@ -35,7 +35,7 @@ public class MainPage extends PageObject {
     // Вводит в поле "Откуда?" стартовую точку
     public void enterInFromTextField (String startPoint) {
         fromTextField.clear();
-        wait.until(ExpectedConditions.attributeToBe(fromTextField, "value", "")); // ждём пока поле не очистится
+        //wait.until(ExpectedConditions.attributeToBe(fromTextField, "value", "")); // ждём пока поле не очистится
         fromTextField.sendKeys(startPoint);
         wait.until(ExpectedConditions.attributeToBe(fromTextField, "value", startPoint)); // ждём пока не закончится ввод
     }
