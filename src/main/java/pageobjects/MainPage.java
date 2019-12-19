@@ -1,5 +1,6 @@
 package pageobjects;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -27,12 +28,13 @@ public class MainPage extends PageObject {
         super(driver, wait);
     }
 
+    @Step("Загружает главную страницу сайта")
     public void load () {
         driver.get("https://rasp.yandex.ru/");
         wait.until(ExpectedConditions.visibilityOfAllElements(fromTextField, toTextField, whenTextField, searchButton));
     }
 
-    // Вводит в поле "Откуда?" стартовую точку
+    @Step("Вводит в поле \"Откуда?\" стартовую точку: {startPoint}")
     public void enterInFromTextField (String startPoint) {
         fromTextField.clear();
         wait.until(ExpectedConditions.textToBePresentInElementValue(fromTextField, "")); // ждём пока поле не очистится
@@ -40,7 +42,7 @@ public class MainPage extends PageObject {
         wait.until(ExpectedConditions.attributeToBe(fromTextField, "value", startPoint)); // ждём пока не закончится ввод
     }
 
-    // Вводит в поле "Куда?" конечную точку
+    @Step("Вводит в поле \"Куда?\" конечную точку: {destinationPoint}")
     public void enterInToTextField (String destinationPoint) {
         toTextField.clear();
         wait.until(ExpectedConditions.textToBePresentInElementValue(toTextField, "")); // ждём пока поле не очистится
@@ -48,7 +50,7 @@ public class MainPage extends PageObject {
         wait.until(ExpectedConditions.textToBePresentInElementValue(toTextField, destinationPoint)); // ждём пока не закончится ввод
     }
 
-    // Вводит в поле "Когда?" дату прописью
+    @Step("Вводит в поле \"Когда?\" дату прописью: {date}")
     public void enterInWhenTextField (String date) {
         whenTextField.clear();
         wait.until(ExpectedConditions.textToBePresentInElementValue(whenTextField, "")); // ждём пока поле не очистится
@@ -63,6 +65,7 @@ public class MainPage extends PageObject {
         enterInWhenTextField(date);
     }
 
+    @Step("Выбырает тип транспорта: {vehicle}")
     public void chooseVehicleType(String vehicle) {
         String xpath = String.format("//span[text()='%s']/..", vehicle);
         WebElement webElement = driver.findElement(By.xpath(xpath));
@@ -70,7 +73,7 @@ public class MainPage extends PageObject {
             webElement.click();
     }
 
-    // Кликает по кнопке "Найти"
+    @Step("Кликает по кнопке \"Найти\"")
     public SearchPage clickOnSearchButton () {
         searchButton.submit();
         return new SearchPage(driver,wait);

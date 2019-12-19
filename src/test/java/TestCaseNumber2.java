@@ -1,7 +1,7 @@
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -40,7 +40,7 @@ public class TestCaseNumber2 {
         return date.getDayOfMonth() + " " + months[date.getMonthValue() - 1];
     }
 
-    @BeforeClass
+    @BeforeAll
     public static void setUp() {
         /*System.setProperty("webdriver.gecko.driver", "C:/geckodriver.exe");
         driver = new FirefoxDriver();*/
@@ -64,11 +64,11 @@ public class TestCaseNumber2 {
     @Test
     // 7. Проверяет, что отображается ошибка с текстом «Пункт прибытия не найден. Проверьте правильность написания или выберите другой город."
     public void checkErrorMessages() {
-        Assert.assertEquals("Пункт прибытия не найден. Проверьте правильность написания или выберите другой город.",
+        Assertions.assertEquals("Пункт прибытия не найден. Проверьте правильность написания или выберите другой город.",
                 searchPage.getDestinationPointErrorMessage());
     }
 
-    @AfterClass
+    @AfterAll
     public static void finish() {
         /*try {
             Thread.sleep(5000);
